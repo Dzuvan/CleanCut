@@ -1,7 +1,7 @@
 script: "/src/screens/pause/pause.gui_script"
 fonts {
-  name: "system_font"
-  font: "/builtins/fonts/system_font.font"
+  name: "CortisaProBold"
+  font: "/assets/fonts/CortisaProBold.font"
 }
 textures {
   name: "main"
@@ -70,7 +70,7 @@ nodes {
 nodes {
   position {
     x: 500.0
-    y: 385.0
+    y: 381.0
     z: 0.0
     w: 1.0
   }
@@ -101,7 +101,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "RESUME"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "resume"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -132,7 +132,7 @@ nodes {
 nodes {
   position {
     x: 500.0
-    y: 284.0
+    y: 276.0
     z: 0.0
     w: 1.0
   }
@@ -163,7 +163,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "EXIT"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "exit"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

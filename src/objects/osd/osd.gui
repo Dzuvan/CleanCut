@@ -1,7 +1,7 @@
 script: "/src/objects/osd/osd.gui_script"
 fonts {
-  name: "system_font"
-  font: "/builtins/fonts/system_font.font"
+  name: "CortisaProBold"
+  font: "/assets/fonts/CortisaProBold.font"
 }
 textures {
   name: "main"
@@ -159,7 +159,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "CURRENT SCORE:  999999"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

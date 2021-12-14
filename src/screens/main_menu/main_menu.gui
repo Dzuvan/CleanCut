@@ -1,7 +1,7 @@
 script: "/src/screens/main_menu/main_menu.gui_script"
 fonts {
-  name: "system_font"
-  font: "/builtins/fonts/system_font.font"
+  name: "CortisaProBold"
+  font: "/assets/fonts/CortisaProBold.font"
 }
 background_color {
   x: 0.0
@@ -43,7 +43,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "play"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "play"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -105,7 +105,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "options"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "options"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -167,7 +167,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "exit"
-  font: "system_font"
+  font: "CortisaProBold"
   id: "exit"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
