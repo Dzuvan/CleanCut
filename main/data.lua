@@ -3,8 +3,10 @@
 -- require "my_directory.my_file"
 -- in any script using the functions.
 return {
+	current_level = 1,
 	lives = 3,
 	total_lives = 3,
 	score = 0,
+	highscore = 0,
 	meat_remaining = 10
 }

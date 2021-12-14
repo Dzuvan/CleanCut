@@ -1,8 +1,9 @@
 local druid = require "druid.druid"
+local monarch = require "monarch.monarch"
 local msgs = require "main.messages"
 local data = require "main.data"
 
-local function speed_callback(self)
+local function speed_callback()
 	msg.post("/fan", "toggle_speed")
 end
 
@@ -18,13 +19,21 @@ function create_life_nodes(self)
 	self.lives = node
 end
 
+local function hover_cb(self, node)
+	self.hover = node
+end
+
 function init(self)
+	self.hover = nil
 	self.lives = nil
 	create_life_nodes(self)
 	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.score)
 	self.druid = druid.new(self)
-	self.druid:new_button("button_a", speed_callback):set_key_trigger("key_z")
-	self.druid:new_button("button_b", cut_callback):set_key_trigger("key_x")
+	local a = self.druid:new_button("button_a", speed_callback):set_key_trigger("key_z")
+	a.hover.on_mouse_hover:subscribe(function(_, state) self.hover = state end)
+
+	local b = self.druid:new_button("button_b", cut_callback):set_key_trigger("key_x")
+	b.hover.on_mouse_hover:subscribe(function(_, state) self.hover = state end)
 end
 
 function final(self)
@@ -50,6 +59,13 @@ function on_input(self, action_id, action)
 		elseif action_id == msgs.KEY_F2 then
 			msg.post("@system:", "toggle_profile")
 		end
+	end
+	if action_id == hash("touch") and not self.hover and action.released then
+		cut_callback()
+	elseif action_id == hash("mouse_2") and not self.hover and action.released then
+		speed_callback()
+	elseif action_id == hash("key_esc") and action.released then
+		monarch.show("pause")
 	end
 	return self.druid:on_input(action_id, action)
 end

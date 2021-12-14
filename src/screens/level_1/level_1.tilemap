@@ -333,13 +333,6 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 23
-    y: 6
-    tile: 115
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
     x: 26
     y: 6
     tile: 22
@@ -392,13 +385,6 @@ layers {
     x: 21
     y: 7
     tile: 182
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
-    x: 23
-    y: 7
-    tile: 83
     h_flip: 0
     v_flip: 0
   }
@@ -466,13 +452,6 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 23
-    y: 8
-    tile: 115
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
     x: 26
     y: 8
     tile: 22
@@ -606,16 +585,9 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 22
-    y: 9
-    tile: 199
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
     x: 23
     y: 9
-    tile: 83
+    tile: 22
     h_flip: 0
     v_flip: 0
   }
@@ -753,16 +725,9 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 22
-    y: 10
-    tile: 199
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
     x: 23
     y: 10
-    tile: 83
+    tile: 22
     h_flip: 0
     v_flip: 0
   }
@@ -818,7 +783,7 @@ layers {
   cell {
     x: 23
     y: 11
-    tile: 115
+    tile: 22
     h_flip: 0
     v_flip: 0
   }
@@ -860,7 +825,7 @@ layers {
   cell {
     x: 23
     y: 12
-    tile: 83
+    tile: 22
     h_flip: 0
     v_flip: 0
   }
@@ -888,7 +853,7 @@ layers {
   cell {
     x: 23
     y: 13
-    tile: 115
+    tile: 22
     h_flip: 0
     v_flip: 0
   }
@@ -909,7 +874,7 @@ layers {
   cell {
     x: 23
     y: 14
-    tile: 83
+    tile: 22
     h_flip: 0
     v_flip: 0
   }

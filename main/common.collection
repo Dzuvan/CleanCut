@@ -24,7 +24,7 @@ instances {
   prototype: "/src/objects/guillotine/guillotine.go"
   position {
     x: 789.0
-    y: 368.0
+    y: 428.0
     z: 0.0
   }
   rotation {
@@ -34,9 +34,9 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 2.0
+    y: 2.0
+    z: 2.0
   }
 }
 instances {
