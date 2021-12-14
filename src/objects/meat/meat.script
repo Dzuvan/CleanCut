@@ -1,0 +1,66 @@
+local camera = require "orthographic.camera"
+local monarch = require "monarch.monarch"
+local msgs = require "main.messages"
+local data = require "main.data"
+
+local CAMERA_ID = hash("/common/camera")
+local SCORE_INCREMENTS = {
+	[msgs.MEAT_GOOD] = 100,
+	[msgs.MEAT_GREAT] = 300,
+	[msgs.MEAT_PERFECT] = 1000
+}
+local CUT_PERFORMANCE = {
+	[msgs.MEAT_GOOD] = "GOOD",
+	[msgs.MEAT_GREAT] = "GREAT",
+	[msgs.MEAT_PERFECT] = "PERFECT"
+}
+local MEAT_CHUNKS = 5
+
+function init(self)
+	go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 1500, go.EASING_LINEAR, 12)
+	self.ms = {}
+	self.label = nil
+end
+
+local function remove_life(self)
+	data.lives = data.lives - 1
+	msg.post("/common/osd#osd", "remove_life")
+	if data.lives == 0 then
+		monarch.show("game_over")
+	end
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	if pos.x > 1500 then
+		pprint("HERE") 
+		msg.post("/common/spawner", "kill", { id = go.get_id() })
+	end
+	self.ms = {}
+end
+
+local function animate_label(self, text)
+	local label_id = factory.create("#labelfactory")
+	label.set_text(label_id, text)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == msgs.CONTACT_POINT_RESPONSE then
+		camera.shake(CAMERA_ID, 0.015, 0.2)
+		if message.other_group == msgs.FAN then 
+			remove_life(self)
+			msg.post("/common/spawner", "kill", { id = go.get_id() })
+		elseif message.other_group == msgs.CUTTER then
+			table.insert(self.ms, message)
+			if self.ms and #self.ms >= 1 then 
+				data.score = data.score + SCORE_INCREMENTS[self.ms[1].own_group]
+				for i = 1, MEAT_CHUNKS do
+					msg.post("#collisionobject"..i, "disable")
+				end
+				msg.post("/common/osd#osd", "update_score", {score = data.score})
+				animate_label(self, CUT_PERFORMANCE[self.ms[1].own_group])
+				msg.post("/common/spawner", "kill", { id = go.get_id() })
+			end
+		end
+	end
+end

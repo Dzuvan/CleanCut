@@ -1,0 +1,10 @@
+local monrach = require "monarch.monarch"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "show_first_screen")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_first_screen") then monrach.show("main_menu") end
+end

@@ -1,0 +1,5 @@
+function init(self)
+	go.set_scale(2)
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y + 50, go.EASING_LINEAR, 0.5, 0, function() go.delete() end)
+	go.animate("#label", "color.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.5)
+end

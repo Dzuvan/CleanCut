@@ -1,0 +1,55 @@
+local druid = require "druid.druid"
+local msgs = require "main.messages"
+local data = require "main.data"
+
+local function speed_callback(self)
+	msg.post("/fan", "toggle_speed")
+end
+
+local function cut_callback()
+	msg.post("guillotine", "drop")
+end
+
+function create_life_nodes(self)
+	local node = gui.new_box_node(vmath.vector3(64, 600, 0), vmath.vector3(60, 60, 0))
+	gui.set_id(node, "life_")
+	gui.set_texture(node, "bg")
+	gui.play_flipbook(node, "hp", nil, { offset = data.lives / data.total_lives, playback_rate = 5 })
+	self.lives = node
+end
+
+function init(self)
+	self.lives = nil
+	create_life_nodes(self)
+	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.score)
+	self.druid = druid.new(self)
+	self.druid:new_button("button_a", speed_callback):set_key_trigger("key_z")
+	self.druid:new_button("button_b", cut_callback):set_key_trigger("key_x")
+end
+
+function final(self)
+	self.druid:final()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == msgs.UPDATE_SCORE then
+		local node = gui.get_node("score")
+		gui.set_text(node, "CURRENT SCORE: "..message.score)
+	elseif message_id == msgs.REMOVE_LIFE then
+		if self.lives then
+			gui.play_flipbook(self.lives, "hp", nil, { offset = data.lives / data.total_lives, playback_rate = 0 })
+		end
+	end
+	self.druid:on_message(message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+	if action.released and sys.get_engine_info().is_debug then
+		if action_id == msgs.KEY_F1 then
+			msg.post("@system:", "toggle_physics_debug")
+		elseif action_id == msgs.KEY_F2 then
+			msg.post("@system:", "toggle_profile")
+		end
+	end
+	return self.druid:on_input(action_id, action)
+end

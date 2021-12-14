@@ -1,0 +1,21 @@
+local msgs = require "main.messages"
+local data = require "main.data"
+
+function init(self)
+	self.can_start_animation = true
+end
+
+local function drop_cb(self)
+	self.can_start_animation = true
+	msg.post("#collisionobject", "enable")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == msgs.DROP and self.can_start_animation then
+		self.can_start_animation = false
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, 0, go.EASING_INBACK, 1, 0, drop_cb)
+	elseif message_id == msgs.CONTACT_POINT_RESPONSE then
+		msg.post("#collisionobject", "disable")
+		timer.delay(1, false, function() msg.post("#collisionobject", "enable") end)
+	end
+end

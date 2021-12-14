@@ -1,0 +1,2 @@
+prototype: "/src/objects/label/label.go"
+load_dynamically: false
