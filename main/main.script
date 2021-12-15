@@ -6,12 +6,19 @@ local msgs = require "main.messages"
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	defsave.appname = "clean_cut"
-	defsave.default_data = data
+	defsave.default_data = data.default
 
 	defsave.load("config")
 	defsave.load("player")
+	data.config = {}
+	data.player = {}
+	for k,_ in pairs(data.default.config) do
+		data.config[k] = defsave.get("config", k)
+	end
 
-	data.config = defsave.get("config", "config")
+	for k,_ in pairs(data.default.player) do
+		data.player[k] = defsave.get("player", k)
+	end
 
 	msg.post("#", "show_first_screen")
 end

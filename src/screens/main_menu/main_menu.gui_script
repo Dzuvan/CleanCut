@@ -1,5 +1,6 @@
 local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
+local data = require "main.data"
 
 local function play_callback()
 	monarch.show("level_1")
@@ -24,6 +25,13 @@ function init(self)
 	self.druid:new_button("credits", credits_callback):set_key_trigger("key_2")
 	self.druid:new_button("options", options_callback):set_key_trigger("key_3")
 	local exit = self.druid:new_button("exit", exit_callabck):set_key_trigger("key_4"):set_enabled(info.system_name ~= "HTML5")
+	local hs_node = gui.get_node("hs")
+	local hs = data.player.highscore
+	gui.set_enabled(hs_node, hs > 0)
+
+	if hs > 0 then
+		gui.set_text(hs_node, "HIGHSCORE: "..hs)
+	end
 end
 
 function final(self)

@@ -1,6 +1,7 @@
 local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
 local data = require "main.data"
+local defsave =  require "defsave.defsave" 
 
 local function play_again_callback(self)
 	monarch.show("level_1", { clear = true })
@@ -16,12 +17,11 @@ end
 
 function init(self)
 	local info = sys.get_sys_info()
-	if data.player.score > data.player.highscore then data.player.highscore = data.player.score end
-	data.player.meat_remaining = 10
-	data.player.current_level = 1
-	data.player.score = 0
-	data.player.lives = 3
-	data.player.total_lives = 3 
+	if data.player.score > data.player.highscore then 
+		data.player.highscore = data.player.score
+		defsave.set("player", "highscore", data.player.highscore)
+	end
+	data.player = data.default.player
 	self.druid = druid.new(self)
 	self.druid:new_button("play_again", play_again_callback)
 	self.druid:new_button("exit", exit_button_callback):set_enabled(info.system_name ~= "HTML5")

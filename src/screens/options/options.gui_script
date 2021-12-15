@@ -36,7 +36,9 @@ function init(self)
 end
 
 function final(self)
-	defsave.set("config", "config", data.config)
+	for k,v in pairs(data.config) do
+		defsave.set("config", k, v)
+	end
 	self.druid:final()
 end
 

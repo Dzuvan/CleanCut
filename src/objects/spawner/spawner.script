@@ -1,3 +1,4 @@
+local defsave = require "defsave.defsave"
 local msgs = require "main.messages"
 local data = require "main.data"
 
@@ -11,6 +12,8 @@ local function spawn(self)
 	data.player.meat_remaining = data.player.meat_remaining - 1 
 	if data.player.meat_remaining == 0 then
 		if self.spawn_timer then timer.cancel(self.spawn_timer) end
+		data.player.current_level = data.player.current_level + 1
+		defsave.set("player", "current_level", data.player.current_level)
 		pprint("NEXT_LEVEL")
 	end 
 end

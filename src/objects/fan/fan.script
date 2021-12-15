@@ -3,6 +3,8 @@ local msgs = require "main.messages"
 function init(self)
 	self.is_slowed = false
 	self.angle = 0
+	msg.post("#collisionobject", "disable")
+	timer.delay(10, false, function() msg.post("#collisionobject", "enable") end)
 end
 
 function update(self, dt)

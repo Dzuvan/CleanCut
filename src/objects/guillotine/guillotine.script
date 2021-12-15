@@ -13,7 +13,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == msgs.DROP and self.can_start_animation then
 		self.can_start_animation = false
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, 350, go.EASING_INBACK, 1, 0, drop_cb)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, 450, go.EASING_INBACK, 1, 0, drop_cb)
 	elseif message_id == msgs.CONTACT_POINT_RESPONSE then
 		msg.post("#collisionobject", "disable")
 		timer.delay(1, false, function() msg.post("#collisionobject", "enable") end)
