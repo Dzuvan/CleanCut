@@ -8,8 +8,8 @@ local function spawn(self)
 	local props = {}
 	local items = factory.create("#meatfactory", pos, nil, props, 4)
 	table.insert(self.ids, items)
-	data.meat_remaining = data.meat_remaining - 1 
-	if data.meat_remaining == 0 then
+	data.player.meat_remaining = data.player.meat_remaining - 1 
+	if data.player.meat_remaining == 0 then
 		if self.spawn_timer then timer.cancel(self.spawn_timer) end
 		pprint("NEXT_LEVEL")
 	end 

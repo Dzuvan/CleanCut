@@ -16,7 +16,7 @@ function create_life_node(self)
 	local node = gui.new_box_node(vmath.vector3(64, 600, 0), vmath.vector3(60, 60, 0))
 	gui.set_id(node, "life_")
 	gui.set_texture(node, "bg")
-	gui.play_flipbook(node, "hp", nil, { offset = data.lives / data.total_lives, playback_rate = 5 })
+	gui.play_flipbook(node, "hp", nil, { offset = data.player.lives / data.player.total_lives, playback_rate = 5 })
 	self.lives = node
 end
 
@@ -31,7 +31,7 @@ function init(self)
 	self.lives = nil
 	create_life_node(self)
 	setup_transitions(self)
-	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.score)
+	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.player.score)
 
 	self.druid = druid.new(self)
 	local a = self.druid:new_button("button_a", speed_callback):set_key_trigger("key_z")
@@ -51,7 +51,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(node, "CURRENT SCORE: "..message.score)
 	elseif message_id == msgs.REMOVE_LIFE then
 		if self.lives then
-			gui.play_flipbook(self.lives, "hp", nil, { offset = data.lives / data.total_lives, playback_rate = 0 })
+			gui.play_flipbook(self.lives, "hp", nil, { offset = data.player.lives / data.player.total_lives, playback_rate = 0 })
 		end
 	end
 	self.transition.handle(message_id, message, sender)

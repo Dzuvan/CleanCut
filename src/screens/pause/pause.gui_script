@@ -14,12 +14,11 @@ local function main_menu_callback()
 end
 
 function init(self)
+	local info = sys.get_sys_info()
 	self.druid = druid.new(self)
 	self.druid:new_button("resume", resume_button_callback):set_key_trigger("key_esc")
-	self.druid:new_button("exit", exit_button_callback)
+	self.druid:new_button("exit", exit_button_callback):set_enabled(info.system_name ~= "HTML5")
 	self.druid:new_button("main_menu", main_menu_callback)
-	local info = sys.get_sys_info()
-	gui.set_enabled(gui.get_node("exit"), info.system_name ~= "HTML5")
 end
 
 function final(self)

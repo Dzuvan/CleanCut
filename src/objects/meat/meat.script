@@ -23,17 +23,16 @@ function init(self)
 end
 
 local function remove_life(self)
-	data.lives = data.lives - 1
+	data.player.lives = data.player.lives - 1
 	msg.post("/common/osd#osd", "remove_life")
-	if data.lives == 0 then
+	if data.player.lives == 0 then
 		monarch.show("game_over")
 	end
 end
 
 function update(self, dt)
 	local pos = go.get_position()
-	if pos.x > 1500 then
-		pprint("HERE") 
+	if pos.x > 1300 then
 		msg.post("/common/spawner", "kill", { id = go.get_id() })
 	end
 	self.ms = {}
@@ -53,11 +52,11 @@ function on_message(self, message_id, message, sender)
 		elseif message.other_group == msgs.CUTTER then
 			table.insert(self.ms, message)
 			if self.ms and #self.ms >= 1 then 
-				data.score = data.score + SCORE_INCREMENTS[self.ms[1].own_group]
+				data.player.score = data.player.score + SCORE_INCREMENTS[self.ms[1].own_group]
 				for i = 1, CHUNKS do
 					msg.post("#collisionobject"..i, "disable")
 				end
-				msg.post("/common/osd#osd", "update_score", {score = data.score})
+				msg.post("/common/osd#osd", "update_score", {score = data.player.score})
 				animate_label(self, CUT_PERFORMANCE[self.ms[1].own_group])
 				msg.post("/common/spawner", "kill", { id = go.get_id() })
 			end
