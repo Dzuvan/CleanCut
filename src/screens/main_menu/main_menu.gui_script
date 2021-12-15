@@ -13,10 +13,15 @@ local function credits_callback()
 	monarch.show("credits")
 end
 
+local function options_callback()
+	monarch.show("options")
+end
+
 function init(self)
 	self.druid = druid.new(self)
 	self.druid:new_button("play", play_callback):set_key_trigger("key_1")
 	self.druid:new_button("credits", credits_callback):set_key_trigger("key_2")
+	self.druid:new_button("options", options_callback):set_key_trigger("key_3")
 	self.druid:new_button("exit", exit_callabck):set_key_trigger("key_4")
 	local info = sys.get_sys_info()
 	gui.set_enabled(gui.get_node("exit"), info.system_name ~= "HTML5")

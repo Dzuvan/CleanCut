@@ -8,5 +8,8 @@ return {
 	total_lives = 3,
 	score = 0,
 	highscore = 0,
-	meat_remaining = 10
+	meat_remaining = 10,
+	sfx_on = true,
+	bg_on = true,
+	volume = 1.0
 }
