@@ -4,7 +4,7 @@ instances {
   prototype: "/src/objects/fan/fan.go"
   position {
     x: 532.0
-    y: 263.0
+    y: 319.0
     z: 0.1
   }
   rotation {
