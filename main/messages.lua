@@ -18,5 +18,8 @@ return {
 	MEAT_PERFECT = hash("meat_perfect"),
 	UPDATE_SCORE = hash("update_score"),
 	KILL = hash("kill"),
-	REMOVE_LIFE = hash("remove_life")
+	REMOVE_LIFE = hash("remove_life"),
+	BG = hash("bg"),
+	MUTE = hash("mute"),
+	PLAYSOUND = hash("playsound")
 }

@@ -1,0 +1,22 @@
+local m = require "main.messages"
+
+function init(self)
+	self.sounds = {
+		[m.BG] = {duration = 262, timestamp = 0}
+	}
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == m.PLAYSOUND then
+		local current_sound = self.sounds[message.sound]
+		local now = socket.gettime()
+		if now > current_sound.timestamp + current_sound.duration then
+			current_sound.timestamp = now
+			sound.play(msg.url(nil, nil, message.sound))
+		end
+	end
+	if message_id == m.MUTE then
+		local gain = sound.get_group_gain("master")
+		sound.set_group_gain("master", gain == 0 and 1 or 0)
+	end
+end
