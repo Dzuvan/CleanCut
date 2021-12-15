@@ -1,5 +1,6 @@
 local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
 local msgs = require "main.messages"
 local data = require "main.data"
 
@@ -11,7 +12,7 @@ local function cut_callback()
 	msg.post("guillotine", "drop")
 end
 
-function create_life_nodes(self)
+function create_life_node(self)
 	local node = gui.new_box_node(vmath.vector3(64, 600, 0), vmath.vector3(60, 60, 0))
 	gui.set_id(node, "life_")
 	gui.set_texture(node, "bg")
@@ -19,15 +20,19 @@ function create_life_nodes(self)
 	self.lives = node
 end
 
-local function hover_cb(self, node)
-	self.hover = node
+local function setup_transitions(self)
+	self.transition = transitions.create(gui.get_node("cover"))
+	.show_in(transitions.scale_out, gui.EASING_OUTCIRC, 0.7, 0)
+	.show_out(transitions.scale_in, gui.EASING_INCIRC, 0.7, 0)
 end
 
 function init(self)
 	self.hover = nil
 	self.lives = nil
-	create_life_nodes(self)
+	create_life_node(self)
+	setup_transitions(self)
 	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.score)
+
 	self.druid = druid.new(self)
 	local a = self.druid:new_button("button_a", speed_callback):set_key_trigger("key_z")
 	a.hover.on_mouse_hover:subscribe(function(_, state) self.hover = state end)
@@ -49,6 +54,7 @@ function on_message(self, message_id, message, sender)
 			gui.play_flipbook(self.lives, "hp", nil, { offset = data.lives / data.total_lives, playback_rate = 0 })
 		end
 	end
+	self.transition.handle(message_id, message, sender)
 	self.druid:on_message(message_id, message, sender)
 end
 
