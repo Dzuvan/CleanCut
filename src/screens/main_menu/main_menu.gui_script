@@ -9,10 +9,15 @@ local function exit_callabck()
 	sys.exit(0)
 end
 
+local function credits_callback()
+	monarch.show("credits")
+end
+
 function init(self)
 	self.druid = druid.new(self)
 	self.druid:new_button("play", play_callback):set_key_trigger("key_1")
-	self.druid:new_button("exit", exit_callabck):set_key_trigger("key_3")
+	self.druid:new_button("credits", credits_callback):set_key_trigger("key_2")
+	self.druid:new_button("exit", exit_callabck):set_key_trigger("key_4")
 end
 
 function final(self)
