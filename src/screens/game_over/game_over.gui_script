@@ -1,8 +1,9 @@
 local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
+local data = require "main.data"
 
-local function resume_button_callback(self)
-	monarch.back()
+local function play_again_callback(self)
+	monarch.show("level_1", { clear = true })
 end
 
 local function exit_button_callback()
@@ -14,8 +15,14 @@ local function main_menu_callback()
 end
 
 function init(self)
+	if data.score > data.highscore then data.highscore = data.score end
+	data.meat_remaining = 10
+	data.current_level = 1
+	data.score = 0
+	data.lives = 3
+	data.total_lives = 3 
 	self.druid = druid.new(self)
-	self.druid:new_button("resume", resume_button_callback):set_key_trigger("key_esc")
+	self.druid:new_button("play_again", play_again_callback)
 	self.druid:new_button("exit", exit_button_callback)
 	self.druid:new_button("main_menu", main_menu_callback)
 end
