@@ -28,6 +28,36 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "cut"
+  component: "/src/objects/meat/cut.particlefx"
+  position {
+    x: -4.0
+    y: -74.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "dust"
+  component: "/src/objects/meat/dust.particlefx"
+  position {
+    x: 0.0
+    y: 7.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "sprite"
   type: "sprite"

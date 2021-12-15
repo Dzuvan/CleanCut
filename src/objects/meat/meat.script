@@ -46,12 +46,14 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == msgs.CONTACT_POINT_RESPONSE then
 		camera.shake(CAMERA_ID, 0.015, 0.2)
-		if message.other_group == msgs.FAN then 
+		if message.other_group == msgs.FAN then
+			particlefx.play("#cut")
 			remove_life(self)
 			msg.post("/common/spawner", "kill", { id = go.get_id() })
 		elseif message.other_group == msgs.CUTTER then
 			table.insert(self.ms, message)
 			if self.ms and #self.ms >= 1 then 
+				particlefx.play("#dust")
 				data.player.score = data.player.score + SCORE_INCREMENTS[self.ms[1].own_group]
 				for i = 1, CHUNKS do
 					msg.post("#collisionobject"..i, "disable")

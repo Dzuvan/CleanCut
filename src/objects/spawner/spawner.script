@@ -2,7 +2,7 @@ local defsave = require "defsave.defsave"
 local msgs = require "main.messages"
 local data = require "main.data"
 
-go.property("spawn_time", 1)
+go.property("spawn_time", 5)
 
 local function spawn(self)
 	local pos = go.get_position()
