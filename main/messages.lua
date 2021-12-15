@@ -8,6 +8,9 @@ return {
 	TRIGGER_RESPONSE = hash("trigger_response"),
 	KEY_F1 = hash("key_f1"),
 	KEY_F2 = hash("key_f2"),
+	KEY_ESC = hash("key_esc"),
+	KEY_MOUSE_1 = hash("key_mouse_1"),
+	KEY_MOUSE_2 = hash("key_mouse_2"),
 	DROP = hash("drop"),
 	CUTTER = hash("cutter"),
 	FAN = hash("fan"),
@@ -21,5 +24,6 @@ return {
 	REMOVE_LIFE = hash("remove_life"),
 	BG = hash("bg"),
 	MUTE = hash("mute"),
-	PLAYSOUND = hash("playsound")
+	PLAYSOUND = hash("playsound"),
+	SHOW_FIRST_SCREEN = hash("show_first_screen")
 }
