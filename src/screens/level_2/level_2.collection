@@ -1,9 +1,9 @@
-name: "level_1"
+name: "level_2"
 instances {
   id: "fan"
   prototype: "/src/objects/fan/fan.go"
   position {
-    x: 532.0
+    x: 360.0
     y: 319.0
     z: 0.1
   }

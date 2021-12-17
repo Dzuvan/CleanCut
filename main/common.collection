@@ -1,25 +1,5 @@
 name: "common"
 instances {
-  id: "camera"
-  prototype: "/orthographic/camera.go"
-  position {
-    x: 465.0
-    y: 240.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "guillotine"
   prototype: "/src/objects/guillotine/guillotine.go"
   position {
@@ -60,11 +40,11 @@ instances {
   }
 }
 instances {
-  id: "sounds"
-  prototype: "/src/objects/audio/sounds.go"
+  id: "belt"
+  prototype: "/src/objects/belt/belt.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 66.0
+    y: 225.0
     z: 0.0
   }
   rotation {
@@ -74,9 +54,129 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt1"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 198.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt2"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 329.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt3"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 461.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt4"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 593.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt5"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 725.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "belt6"
+  prototype: "/src/objects/belt/belt.go"
+  position {
+    x: 857.0
+    y: 225.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
   }
 }
 scale_along_z: 0

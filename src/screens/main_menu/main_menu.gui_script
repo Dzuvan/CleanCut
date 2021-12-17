@@ -3,7 +3,7 @@ local monarch = require "monarch.monarch"
 local data = require "main.data"
 
 local function play_callback()
-	monarch.show("level_1")
+	monarch.show("level_2")
 end
 
 local function exit_callabck()
@@ -18,19 +18,24 @@ local function options_callback()
 	monarch.show("options")
 end
 
+local function continue_callback()
+	monarch.show("level_"..data.player.current_level)
+end
+
 function init(self)
 	local info = sys.get_sys_info()
 	self.druid = druid.new(self)
 	self.druid:new_button("play", play_callback):set_key_trigger("key_1")
 	self.druid:new_button("credits", credits_callback):set_key_trigger("key_2")
 	self.druid:new_button("options", options_callback):set_key_trigger("key_3")
+	self.druid:new_button("continue", continue_callback):set_enabled(data.player.current_level > 1)
 	local exit = self.druid:new_button("exit", exit_callabck):set_key_trigger("key_4"):set_enabled(info.system_name ~= "HTML5")
-	local hs_node = gui.get_node("hs")
-	local hs = data.player.highscore
-	gui.set_enabled(hs_node, hs > 0)
+	local hs_node = gui.get_node("highscore")
+	local highscore = data.player.highscore
+	gui.set_enabled(hs_node, highscore > 0)
 
-	if hs > 0 then
-		gui.set_text(hs_node, "HIGHSCORE: "..hs)
+	if highscore > 0 then
+		gui.set_text(hs_node, "HIGHSCORE: "..highscore)
 	end
 end
 

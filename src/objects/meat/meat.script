@@ -3,7 +3,7 @@ local monarch = require "monarch.monarch"
 local msgs = require "main.messages"
 local data = require "main.data"
 
-local CAMERA_ID = hash("/common/camera")
+local CAMERA_ID = hash("/camera")
 local SCORE_INCREMENTS = {
 	[msgs.MEAT_GOOD] = 100,
 	[msgs.MEAT_GREAT] = 300,

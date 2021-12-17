@@ -10,6 +10,8 @@ width = 960
 height = 640
 vsync = 0
 update_frequency = 60
+display_device_info = 0
+display_profiles = /main/layout.display_profilesc
 
 [android]
 input_method = HiddenInputField

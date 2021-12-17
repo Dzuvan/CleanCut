@@ -13,7 +13,12 @@ local function cut_callback()
 end
 
 function create_life_node(self)
-	local node = gui.new_box_node(vmath.vector3(64, 600, 0), vmath.vector3(60, 60, 0))
+	local pos = vmath.vector3(64, 64, 0)
+	local node = gui.new_box_node(pos, vmath.vector3(60, 60, 0))
+	local fx_node = gui.new_particlefx_node(pos, "splash")
+	gui.set_id(fx_node, "particlefx")
+	gui.set_layer(fx_node, "graphics")
+	gui.set_layer(node, "graphics")
 	gui.set_id(node, "life_")
 	gui.set_texture(node, "bg")
 	gui.play_flipbook(node, "hp", nil, { offset = data.player.lives / data.player.total_lives, playback_rate = 5 })
@@ -29,6 +34,7 @@ end
 function init(self)
 	self.hover = nil
 	self.lives = nil
+	gui.set_text(gui.get_node("level"), "level "..data.player.current_level)
 	create_life_node(self)
 	setup_transitions(self)
 	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.player.score)
