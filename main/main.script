@@ -4,6 +4,7 @@ local data = require "main.data"
 local msgs = require "main.messages"
 
 function init(self)
+	msg.post("@render:", "clear_color", { color = vmath.vector4(0.11, 0.13, 0.18, 1.0) })
 	msg.post(".", "acquire_input_focus")
 	defsave.appname = "clean_cut"
 	defsave.default_data = data.default
@@ -19,6 +20,9 @@ function init(self)
 	for k,_ in pairs(data.default.player) do
 		data.player[k] = defsave.get("player", k)
 	end
+
+	msg.post("sounds", "toggle_mute", { bg = data.config.bg_on, sfx = data.config.sfx_on })
+	msg.post("sounds", "set_volume", { volume = data.config.volume })
 
 	msg.post("#", "show_first_screen")
 end

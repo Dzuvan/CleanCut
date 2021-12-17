@@ -1,6 +1,6 @@
 sound: "/assets/audio/bg.ogg"
 looping: 1
-group: "master"
+group: "bg"
 gain: 0.4
 pan: 0.0
 speed: 1.0

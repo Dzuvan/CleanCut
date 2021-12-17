@@ -1,0 +1,7 @@
+sound: "/assets/audio/sfx/fan_spin.ogg"
+looping: 1
+group: "sfx"
+gain: 0.2
+pan: 0.0
+speed: 0.7
+loopcount: 0

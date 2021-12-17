@@ -14,7 +14,6 @@ local function spawn(self)
 end
 
 function init(self)
-	msg.post("@render:", "clear_color", { color = vmath.vector4(0.11, 0.13, 0.18, 1.0) })
 	msg.post("main:/sounds", "playsound", { sound = msgs.BG })
 	self.count = 0
 	self.ids = {}

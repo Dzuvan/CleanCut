@@ -3,10 +3,13 @@ local monarch = require "monarch.monarch"
 local defsave = require "defsave.defsave"
 local data = require "main.data"
 
+local SOUND_CONTROLLER = "main:/sounds"
+
 local function setup_slider(self)
 	local slider = self.druid:new_slider("slider_pin", vmath.vector3(100, 0, 0), function(_, value)
 		gui.set_text(gui.get_node("text_progress_slider"), math.ceil(value * 100) .. "%")
 		data.config.volume = value
+		msg.post(SOUND_CONTROLLER, "set_volume", { volume = value } )
 	end)
 	slider:set(data.config.volume)
 end
@@ -21,6 +24,7 @@ local function setup_checkbox_group(self)
 		local state = checkbox_group:get_state()
 		data.config.bg_on = state[2]
 		data.config.sfx_on = state[1] 
+		msg.post(SOUND_CONTROLLER, "toggle_mute", { sfx = state[1], bg = state[2] })
 	end)
 end
 

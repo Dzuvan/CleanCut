@@ -1,0 +1,7 @@
+sound: "/assets/audio/sfx/fan_cut.ogg"
+looping: 0
+group: "sfx"
+gain: 0.09
+pan: 0.0
+speed: 2.0
+loopcount: 0

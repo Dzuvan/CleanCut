@@ -1,8 +1,11 @@
 local msgs = require "main.messages"
 
+local SOUND_CONTROLLER = "main:/sounds"
+
 function init(self)
 	self.is_slowed = false
 	self.angle = 0
+	msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.FAN_SPIN })
 	-- msg.post("#collisionobject", "disable")
 	-- timer.delay(10, false, function() msg.post("#collisionobject", "enable") end)
 end
@@ -16,6 +19,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == msgs.TOGGLE_SPEED then
 		self.is_slowed = not self.is_slowed
+		msg.post(SOUND_CONTROLLER, "change_speed", { sound = msgs.FAN_SPIN, speed = self.is_slowed and 0.3 or 0.7 })
 	elseif message_id == msgs.CONTACT_POINT_RESPONSE then
 		msg.post("#collisionobject", "disable")
 		timer.delay(self.is_slowed and 1 or 0.2, false, function() msg.post("#collisionobject", "enable") end)

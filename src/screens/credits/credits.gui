@@ -78,7 +78,7 @@ nodes {
 nodes {
   position {
     x: 35.0
-    y: 296.0
+    y: 345.0
     z: 0.0
     w: 1.0
   }
@@ -139,8 +139,8 @@ nodes {
 }
 nodes {
   position {
-    x: 450.0
-    y: 371.0
+    x: 437.0
+    y: 447.0
     z: 0.0
     w: 1.0
   }
@@ -157,7 +157,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 1800.0
+    x: 1000.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -170,7 +170,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "https://www.1001freefonts.com/designer-ikramul-hadi-khan-fontlisting.php"
+  text: "https://dribbble.com/hadi_hd3"
   font: "CortisaProBold"
   id: "url_1"
   xanchor: XANCHOR_NONE
@@ -201,8 +201,8 @@ nodes {
 }
 nodes {
   position {
-    x: 252.0
-    y: 221.0
+    x: 435.0
+    y: 340.0
     z: 0.0
     w: 1.0
   }
@@ -376,6 +376,131 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 34.0
+    y: 246.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 150.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "audio:\n"
+  ""
+  font: "CortisaProBold"
+  id: "audio"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 434.0
+    y: 238.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 1000.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "https://bit.ly/3GPXpS7"
+  font: "CortisaProBold"
+  id: "url_3"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
 }
 layers {
   name: "graphics"

@@ -6,18 +6,19 @@ local function resume_button_callback(self)
 end
 
 local function exit_button_callback()
+	sound.stop("main:/sounds")
 	sys.exit(0)
 end
 
 local function main_menu_callback()
+	sound.stop("main:/sounds")
 	monarch.show("main_menu", { clear = true })
 end
 
 function init(self)
-	local info = sys.get_sys_info()
 	self.druid = druid.new(self)
 	self.druid:new_button("resume", resume_button_callback):set_key_trigger("key_esc")
-	self.druid:new_button("exit", exit_button_callback):set_enabled(info.system_name ~= "HTML5")
+	self.druid:new_button("exit", exit_button_callback):set_enabled(sys.get_sys_info().system_name ~= "HTML5")
 	self.druid:new_button("main_menu", main_menu_callback)
 end
 

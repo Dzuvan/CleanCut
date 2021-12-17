@@ -4,6 +4,7 @@ local msgs = require "main.messages"
 local data = require "main.data"
 
 local CAMERA_ID = hash("/camera")
+local SOUND_CONTROLLER = "main:/sounds"
 local SCORE_INCREMENTS = {
 	[msgs.MEAT_GOOD] = 100,
 	[msgs.MEAT_GREAT] = 300,
@@ -50,9 +51,11 @@ function on_message(self, message_id, message, sender)
 			particlefx.play("#cut")
 			remove_life(self)
 			msg.post("/common/spawner", "kill", { id = go.get_id() })
+			msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.FAN_CUT })
 		elseif message.other_group == msgs.CUTTER then
 			table.insert(self.ms, message)
-			if self.ms and #self.ms >= 1 then 
+			if self.ms and #self.ms >= 1 then
+				msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.GUILLOTINE_SLICE })
 				particlefx.play("#dust")
 				data.player.score = data.player.score + SCORE_INCREMENTS[self.ms[1].own_group]
 				for i = 1, CHUNKS do

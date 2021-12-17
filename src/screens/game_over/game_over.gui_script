@@ -16,7 +16,6 @@ local function main_menu_callback()
 end
 
 function init(self)
-	local info = sys.get_sys_info()
 	if data.player.score > data.player.highscore then 
 		data.player.highscore = data.player.score
 		defsave.set("player", "highscore", data.player.highscore)
@@ -24,7 +23,7 @@ function init(self)
 	data.player = data.default.player
 	self.druid = druid.new(self)
 	self.druid:new_button("play_again", play_again_callback)
-	self.druid:new_button("exit", exit_button_callback):set_enabled(info.system_name ~= "HTML5")
+	self.druid:new_button("exit", exit_button_callback):set_enabled(sys.get_sys_info().system_name ~= "HTML5")
 	self.druid:new_button("main_menu", main_menu_callback)
 end
 

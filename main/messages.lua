@@ -22,7 +22,12 @@ return {
 	UPDATE_SCORE = hash("update_score"),
 	KILL = hash("kill"),
 	REMOVE_LIFE = hash("remove_life"),
+	CHANGE_SPEED = hash("change_speed"),
 	BG = hash("bg"),
+	FAN_SPIN = hash("fan_spin"),
+	FAN_CUT = hash("fan_cut"),
+	GUILLOTINE_DROP = hash("guillotine_drop"),
+	GUILLOTINE_SLICE = hash("guillotine_slice"),
 	MUTE = hash("mute"),
 	PLAYSOUND = hash("playsound"),
 	SHOW_FIRST_SCREEN = hash("show_first_screen")

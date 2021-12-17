@@ -38,6 +38,10 @@ images {
   image: "/assets/images/ui/pin.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/images/logo-hor-outline-white-320.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "belt"
   images {
