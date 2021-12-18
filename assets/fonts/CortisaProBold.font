@@ -1,6 +1,6 @@
-font: "/assets/fonts/CortisaPro-Bold.ttf"
+font: "/assets/fonts/Dosis-Bold.ttf"
 material: "/builtins/fonts/font.material"
-size: 34
+size: 54
 antialias: 0
 alpha: 1.0
 outline_alpha: 0.0

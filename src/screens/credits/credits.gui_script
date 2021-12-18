@@ -1,7 +1,7 @@
 local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
 
-local function font_callback(i)
+local function link_callback(i)
 	local url = gui.get_text(gui.get_node("url_" .. i))
 	sys.open_url(url, { target = "_blank" })
 end
@@ -9,9 +9,9 @@ end
 function init(self)
 	self.druid = druid.new(self)
 	self.urls = {}
-	for i = 1, 2 do
+	for i = 1, 5 do
 		self.urls[i] = self.druid:new_button("url_" .. i,
-		function() font_callback(i) end)
+		function() link_callback(i) end)
 	end
 	self.druid:new_button("back", function() monarch.back() end)
 end

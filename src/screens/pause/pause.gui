@@ -33,7 +33,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 250.0
+    x: 260.0
     y: 350.0
     z: 0.0
     w: 1.0
@@ -162,7 +162,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "main menu"
+  text: "MAIN MENU\n"
+  ""
   font: "CortisaProBold"
   id: "main_menu"
   xanchor: XANCHOR_NONE

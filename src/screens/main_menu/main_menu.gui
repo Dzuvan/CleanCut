@@ -16,7 +16,7 @@ background_color {
 nodes {
   position {
     x: 492.0
-    y: 403.0
+    y: 420.0
     z: 0.0
     w: 1.0
   }
@@ -46,7 +46,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "play "
+  text: "NEW GAME"
   font: "CortisaProBold"
   id: "play"
   xanchor: XANCHOR_NONE
@@ -78,7 +78,7 @@ nodes {
 nodes {
   position {
     x: 492.0
-    y: 303.0
+    y: 319.0
     z: 0.0
     w: 1.0
   }
@@ -108,7 +108,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "credits"
+  text: "CREDITS"
   font: "CortisaProBold"
   id: "credits"
   xanchor: XANCHOR_NONE
@@ -140,7 +140,7 @@ nodes {
 nodes {
   position {
     x: 492.0
-    y: 203.0
+    y: 218.0
     z: 0.0
     w: 1.0
   }
@@ -170,7 +170,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "options"
+  text: "OPTIONS"
   font: "CortisaProBold"
   id: "options"
   xanchor: XANCHOR_NONE
@@ -202,7 +202,7 @@ nodes {
 nodes {
   position {
     x: 492.0
-    y: 104.0
+    y: 116.0
     z: 0.0
     w: 1.0
   }
@@ -232,7 +232,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "exit"
+  text: "EXIT"
   font: "CortisaProBold"
   id: "exit"
   xanchor: XANCHOR_NONE
@@ -325,8 +325,8 @@ nodes {
 }
 nodes {
   position {
-    x: 493.0
-    y: 504.0
+    x: 236.0
+    y: 422.0
     z: 0.0
     w: 1.0
   }
@@ -356,7 +356,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "continue"
+  text: "CONTINUE"
   font: "CortisaProBold"
   id: "continue"
   xanchor: XANCHOR_NONE

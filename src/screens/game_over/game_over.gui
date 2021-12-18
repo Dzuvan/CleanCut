@@ -42,7 +42,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "you are fired"
+  text: "YOU ARE FIRED"
   font: "CortisaProBold"
   id: "text"
   xanchor: XANCHOR_NONE
@@ -104,7 +104,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "play again"
+  text: "PLAY AGAIN"
   font: "CortisaProBold"
   id: "play_again"
   xanchor: XANCHOR_NONE
@@ -166,7 +166,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "main menu"
+  text: "MAIN MENU"
   font: "CortisaProBold"
   id: "main_menu"
   xanchor: XANCHOR_NONE
@@ -228,7 +228,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "exit"
+  text: "EXIT"
   font: "CortisaProBold"
   id: "exit"
   xanchor: XANCHOR_NONE
