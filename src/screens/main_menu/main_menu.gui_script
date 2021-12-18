@@ -14,7 +14,7 @@ local function copy(obj, seen)
 end
 
 local function play_callback()
-	monarch.show("level_2")
+	monarch.show("level_1")
 end
 
 local function exit_callabck()
@@ -38,9 +38,11 @@ local function logo_callback()
 end
 
 local function setup_continue(self)
-	local continue_node = self.druid:new_button("continue", continue_callback):set_enabled(data.player.current_level > 1)
 	local my_style = copy(default_style)
 	my_style["button"]["ENABLED_COLOR"] = vmath.vector4(0, 1, 0, 1)
+	local is_enabled = data.player.current_level > 1
+	local continue_node = self.druid:new_button("continue", continue_callback):set_enabled(is_enabled)
+	gui.set_enabled(continue_node.node, is_enabled)
 	continue_node:set_style(my_style)
 end
 
