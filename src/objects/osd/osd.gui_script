@@ -75,6 +75,7 @@ function on_input(self, action_id, action)
 		speed_callback()
 	elseif action_id == msgs.KEY_ESC and action.released then
 		monarch.show("pause")
+		sound.pause("main:/sounds", true)
 	end
 	return self.druid:on_input(action_id, action)
 end

@@ -2,6 +2,7 @@ local druid = require "druid.druid"
 local monarch = require "monarch.monarch"
 
 local function resume_button_callback(self)
+	sound.pause("main:/sounds", false)
 	monarch.back()
 end
 
