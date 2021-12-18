@@ -9,7 +9,7 @@ end
 function init(self)
 	self.druid = druid.new(self)
 	self.urls = {}
-	for i = 1, 5 do
+	for i = 1, 4 do
 		self.urls[i] = self.druid:new_button("url_" .. i,
 		function() link_callback(i) end)
 	end
