@@ -16,11 +16,38 @@ animations {
   flip_vertical: 1
 }
 animations {
-  id: "meat"
+  id: "junk_1"
   start_tile: 513
   end_tile: 515
-  playback: PLAYBACK_ONCE_FORWARD
-  fps: 4
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "junk_2"
+  start_tile: 769
+  end_tile: 774
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "junk_3"
+  start_tile: 801
+  end_tile: 804
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "junk_4"
+  start_tile: 865
+  end_tile: 868
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
   flip_horizontal: 0
   flip_vertical: 0
 }

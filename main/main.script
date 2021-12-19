@@ -1,4 +1,4 @@
-local monrach = require "monarch.monarch"
+local monarch = require "monarch.monarch"
 local defsave = require "defsave.defsave"
 local data = require "main.data"
 local msgs = require "main.messages"
@@ -28,7 +28,7 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == msgs.SHOW_FIRST_SCREEN then monrach.show("main_menu") end
+	if message_id == msgs.SHOW_FIRST_SCREEN then monarch.show("main_menu") end
 end
 
 function final()

@@ -3,43 +3,35 @@ local monarch = require "monarch.monarch"
 local msgs = require "main.messages"
 local data = require "main.data"
 
-go.property("spawn_time", 6.5)
+go.property("spawn_time", 5.5)
 
-local function spawn(self)
+local function spawn(self, handle)
+	if data.player.junk_remaining <= 0 then
+		timer.cancel(handle)
+		if data.player.current_level == 5 then
+			monarch.show("game_complete", { sequential = true, clear = true })
+		else
+			data.player.current_level = data.player.current_level + 1
+			defsave.set("player", "current_level", data.player.current_level)
+			defsave.set("player", "score", data.player.score)
+			monarch.show("level_"..data.player.current_level, { sequential = true })
+		end
+		return 
+	end
 	local pos = go.get_position()
-	local props = {}
-	local items = factory.create("#meatfactory", pos, nil, props, 4)
-	table.insert(self.ids, items)
-	data.player.meat_remaining = data.player.meat_remaining - 1
+	local items = factory.create("#junkfactory", pos, nil, nil, 4)
 end
 
 function init(self)
+	data.player.junk_remaining = 5
+	data.player.lives = 3
 	msg.post("main:/sounds", "playsound", { sound = msgs.BG, reset = true })
-	self.count = 0
-	self.ids = {}
-	spawn(self)
 	self.spawn_timer = timer.delay(self.spawn_time, true, spawn)
-end
-
-local function tablefind(t, item)
-	for i=1, #t do
-		if t[i] == item then return i end
-	end
-	return nil
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == msgs.KILL then
 		go.delete(message.id)
-		local i = tablefind(self.ids, message.id)
-		if i then self.ids[i] = nil end
-		if data.player.meat_remaining == 0 then
-			if self.spawn_timer then timer.cancel(self.spawn_timer) end
-			timer.delay(2, false, function()
-				data.player.current_level = data.player.current_level + 1
-				defsave.set("player", "current_level", data.player.current_level)
-				monarch.show("level_"..data.player.current_level, { sequential = true })
-			end)
-		end 
+		data.player.junk_remaining = data.player.junk_remaining - 1
 	end
 end

@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "meatfactory"
-  component: "/src/objects/meat/meatfactory.factory"
+  id: "junkfactory"
+  component: "/src/objects/junk/junkfactory.factory"
   position {
     x: 0.0
     y: 0.0

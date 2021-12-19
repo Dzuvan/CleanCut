@@ -5,7 +5,13 @@ local msgs = require "main.messages"
 local data = require "main.data"
 
 local function speed_callback()
-	msg.post("/fan", "toggle_speed")
+	if data.player.current_level == 3 or data.player.current_level == 5 then
+		for i=1, 2 do 
+			msg.post("/fan"..i, "toggle_speed")
+		end
+	else
+		msg.post("/fan", "toggle_speed")
+	end
 end
 
 local function cut_callback()
@@ -34,7 +40,7 @@ end
 function init(self)
 	self.hover = nil
 	self.lives = nil
-	gui.set_text(gui.get_node("level"), "level "..data.player.current_level)
+	gui.set_text(gui.get_node("level"), "LEVEL "..data.player.current_level)
 	create_life_node(self)
 	setup_transitions(self)
 	gui.set_text(gui.get_node("score"), "CURRENT SCORE: "..data.player.score)

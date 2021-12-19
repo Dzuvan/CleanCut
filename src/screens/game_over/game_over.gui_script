@@ -4,7 +4,11 @@ local data = require "main.data"
 local defsave =  require "defsave.defsave" 
 
 local function play_again_callback(self)
-	monarch.show("level_1", { clear = true })
+	data.player.current_level = 1
+	data.player.score = 0
+	defsave.set("player", "current_level", 1)
+	defsave.set("player", "score", 0)
+	monarch.show("level_1", { clear = true, sequential = true })
 end
 
 local function exit_button_callback()
@@ -16,11 +20,14 @@ local function main_menu_callback()
 end
 
 function init(self)
+	local temp = 0
 	if data.player.score > data.player.highscore then 
 		data.player.highscore = data.player.score
+		temp = data.player.highscore
 		defsave.set("player", "highscore", data.player.highscore)
 	end
-	data.player = data.default.player
+	data.player = data.copy_table(data.default.player)
+	data.player.highscore = temp
 	self.druid = druid.new(self)
 	self.druid:new_button("play_again", play_again_callback)
 	self.druid:new_button("exit", exit_button_callback):set_enabled(sys.get_sys_info().system_name ~= "HTML5")

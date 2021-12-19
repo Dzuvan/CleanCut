@@ -36,3 +36,6 @@ debug = 0
 [input]
 game_binding = /builtins/input/all.input_bindingc
 
+[collection_proxy]
+max_count = 20
+

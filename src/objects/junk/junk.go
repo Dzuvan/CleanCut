@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/src/objects/meat/meat.script"
+  component: "/src/objects/junk/junk.script"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "cut"
-  component: "/src/objects/meat/cut.particlefx"
+  component: "/src/objects/junk/cut.particlefx"
   position {
     x: -4.0
     y: -74.0
@@ -45,10 +45,10 @@ components {
 }
 components {
   id: "dust"
-  component: "/src/objects/meat/dust.particlefx"
+  component: "/src/objects/junk/dust.particlefx"
   position {
     x: 0.0
-    y: 7.0
+    y: 5.0
     z: 0.0
   }
   rotation {
@@ -62,7 +62,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/assets/bg.tilesource\"\n"
-  "default_animation: \"meat\"\n"
+  "default_animation: \"junk_1\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -345,9 +345,9 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 8.0\n"
-  "  data: 8.0\n"
-  "  data: 8.0\n"
+  "  data: 7.0\n"
+  "  data: 7.0\n"
+  "  data: 7.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"

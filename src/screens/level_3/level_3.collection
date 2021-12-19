@@ -1,9 +1,29 @@
-name: "level_1"
+name: "level_3"
 instances {
-  id: "fan"
+  id: "fan2"
   prototype: "/src/objects/fan/fan.go"
   position {
-    x: 532.0
+    x: 264.0
+    y: 319.0
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 4.0
+    y: 4.0
+    z: 4.0
+  }
+}
+instances {
+  id: "fan1"
+  prototype: "/src/objects/fan/fan.go"
+  position {
+    x: 584.0
     y: 319.0
     z: 0.1
   }
@@ -44,10 +64,10 @@ embedded_instances {
   id: "map"
   data: "components {\n"
   "  id: \"level_1\"\n"
-  "  component: \"/src/screens/main_menu/main_menu.tilemap\"\n"
+  "  component: \"/main/level.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 178.5\n"
+  "    y: 0.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"

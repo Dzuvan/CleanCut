@@ -24,7 +24,7 @@ instances {
   prototype: "/src/objects/spawner/spawner.go"
   position {
     x: 49.0
-    y: 251.0
+    y: 256.0
     z: 0.0
   }
   rotation {

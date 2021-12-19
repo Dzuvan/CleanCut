@@ -1,19 +1,14 @@
 local druid = require "druid.druid"
 local default_style = require "druid.styles.default.style"
 local monarch = require "monarch.monarch"
+local defsave = require "defsave.defsave"
 local data = require "main.data"
 
-local function copy(obj, seen)
-	if type(obj) ~= 'table' then return obj end
-	if seen and seen[obj] then return seen[obj] end
-	local s = seen or {}
-	local res = setmetatable({}, getmetatable(obj))
-	s[obj] = res
-	for k, v in pairs(obj) do res[copy(k, s)] = copy(v, s) end
-	return res
-end
-
 local function play_callback()
+	data.player.current_level = 1
+	data.player.score = 0
+	defsave.set("player", "current_level", 1)
+	defsave.set("player", "score", 0)
 	monarch.show("level_1")
 end
 
@@ -38,10 +33,11 @@ local function logo_callback()
 end
 
 local function setup_continue(self)
-	local my_style = copy(default_style)
-	my_style["button"]["ENABLED_COLOR"] = vmath.vector4(0, 1, 0, 1)
+	local my_style = data.copy_table(default_style)
+	my_style["button"]["ENABLED_COLOR"] = vmath.vector4(0.3, 1, 0.3, 1)
 	local is_enabled = data.player.current_level > 1
 	local continue_node = self.druid:new_button("continue", continue_callback):set_enabled(is_enabled)
+	gui.set_color(continue_node.node, vmath.vector4(0, 1, 0.5, 1))
 	gui.set_enabled(continue_node.node, is_enabled)
 	continue_node:set_style(my_style)
 end

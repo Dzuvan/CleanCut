@@ -8,7 +8,7 @@ local SOUND_CONTROLLER = "main:/sounds"
 local SCORE_INCREMENTS = {
 	[msgs.MEAT_GOOD] = 100,
 	[msgs.MEAT_GREAT] = 300,
-	[msgs.MEAT_PERFECT] = 1000
+	[msgs.MEAT_PERFECT] = 1000 * data.player.current_level
 }
 local CUT_PERFORMANCE = {
 	[msgs.MEAT_GOOD] = "GOOD",
@@ -18,8 +18,11 @@ local CUT_PERFORMANCE = {
 local CHUNKS = 5
 
 function init(self)
-	go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 1500, go.EASING_LINEAR, 12)
-	self.ms = {}
+	math.randomseed(socket.gettime()) math.random() math.random()
+	local id = math.random(1, 4)
+	sprite.play_flipbook("#sprite", "junk_"..id)
+	go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 1500, go.EASING_LINEAR, 10)
+	self.message_stack = {}
 	self.label = nil
 end
 
@@ -27,8 +30,13 @@ local function remove_life(self)
 	data.player.lives = data.player.lives - 1
 	msg.post("/common/osd#osd", "remove_life")
 	if data.player.lives == 0 then
-		monarch.show("game_over")
+		monarch.show("game_over", { clear = true, sequential = true })
 	end
+end
+
+local function animate_label(self, text)
+	local label_id = factory.create("#labelfactory")
+	label.set_text(label_id, text)
 end
 
 function update(self, dt)
@@ -36,12 +44,19 @@ function update(self, dt)
 	if pos.x > 1300 then
 		msg.post("/common/spawner", "kill", { id = go.get_id() })
 	end
-	self.ms = {}
-end
-
-local function animate_label(self, text)
-	local label_id = factory.create("#labelfactory")
-	label.set_text(label_id, text)
+	if #self.message_stack > 0 and #self.message_stack < 2 then 
+		msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.GUILLOTINE_SLICE })
+		particlefx.play("#dust")
+		data.player.score = data.player.score + SCORE_INCREMENTS[self.message_stack[1].own_group]
+		for i = 1, CHUNKS do
+			msg.post("#collisionobject"..i, "disable")
+		end
+		msg.post("/common/osd#osd", "update_score", { score = data.player.score })
+		animate_label(self, CUT_PERFORMANCE[self.message_stack[1].own_group])
+		msg.post("/common/spawner", "kill", { id = go.get_id() })
+		self.message_stack = {}
+		return
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -53,18 +68,7 @@ function on_message(self, message_id, message, sender)
 			msg.post("/common/spawner", "kill", { id = go.get_id() })
 			msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.FAN_CUT })
 		elseif message.other_group == msgs.CUTTER then
-			table.insert(self.ms, message)
-			if self.ms and #self.ms >= 1 then
-				msg.post(SOUND_CONTROLLER, "playsound", { sound = msgs.GUILLOTINE_SLICE })
-				particlefx.play("#dust")
-				data.player.score = data.player.score + SCORE_INCREMENTS[self.ms[1].own_group]
-				for i = 1, CHUNKS do
-					msg.post("#collisionobject"..i, "disable")
-				end
-				msg.post("/common/osd#osd", "update_score", {score = data.player.score})
-				animate_label(self, CUT_PERFORMANCE[self.ms[1].own_group])
-				msg.post("/common/spawner", "kill", { id = go.get_id() })
-			end
+			if #self.message_stack == 0 then table.insert(self.message_stack, message) end
 		end
 	end
 end

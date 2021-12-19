@@ -17,7 +17,6 @@ function on_message(self, message_id, message, sender)
 		local now = socket.gettime()
 		if message.reset or (now > current_sound.timestamp + current_sound.duration) then
 			current_sound.timestamp = now
-			if message.sound == msgs.BG then print("HERE") end
 			sound.play(msg.url(nil, nil, message.sound))
 		end
 	elseif message_id == msgs.CHANGE_SPEED then
