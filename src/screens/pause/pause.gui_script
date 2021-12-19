@@ -13,7 +13,7 @@ end
 
 local function main_menu_callback()
 	sound.stop("main:/sounds")
-	monarch.show("main_menu", { clear = true })
+	monarch.show("main_menu", { clear = true, sequential = true })
 end
 
 function init(self)

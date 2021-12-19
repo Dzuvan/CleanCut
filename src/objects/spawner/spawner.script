@@ -14,7 +14,7 @@ local function spawn(self)
 end
 
 function init(self)
-	msg.post("main:/sounds", "playsound", { sound = msgs.BG })
+	msg.post("main:/sounds", "playsound", { sound = msgs.BG, reset = true })
 	self.count = 0
 	self.ids = {}
 	spawn(self)

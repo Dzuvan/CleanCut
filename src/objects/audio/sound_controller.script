@@ -1,4 +1,5 @@
 local msgs = require "main.messages"
+local data = require "main.data"
 
 function init(self)
 	self.sounds = {
@@ -14,16 +15,22 @@ function on_message(self, message_id, message, sender)
 	if message_id == msgs.PLAYSOUND then
 		local current_sound = self.sounds[message.sound]
 		local now = socket.gettime()
-		if now > current_sound.timestamp + current_sound.duration then
+		if message.reset or (now > current_sound.timestamp + current_sound.duration) then
 			current_sound.timestamp = now
+			if message.sound == msgs.BG then print("HERE") end
 			sound.play(msg.url(nil, nil, message.sound))
 		end
 	elseif message_id == msgs.CHANGE_SPEED then
-		go.set(msg.url(nil, nil, message.sound), "speed", messagfe.speed)
+		go.set(msg.url(nil, nil, message.sound), "speed", message.speed)
 	elseif message_id == hash("toggle_mute") then
-		sound.set_group_gain("sfx", message.sfx and 1 or 0)
-		sound.set_group_gain("bg", message.bg and 1 or 0)
+		sound.set_group_gain("sfx", message.sfx and 0.5 or 0)
+		sound.set_group_gain("bg", message.bg and 0.5 or 0)
 	elseif message_id == hash("set_volume") then
-		sound.set_group_gain("bg", message.volume)
+		if data.config.bg_on then 
+			sound.set_group_gain("bg", message.volume > 0.5 and 0.5 or message.volume)
+		end
+		if data.config.sfx_on  then
+			sound.set_group_gain("sfx", message.volume > 0.5 and 0.5 or message.volume)
+		end
 	end
 end
